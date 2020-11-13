@@ -1,0 +1,27 @@
+<app-navbar title="NOSOTROS" ></app-navbar>
+
+<ion-content class="bg-nosotros">
+
+  <div *ngIf="!members.length" class="nosotros-grid void"></div>
+
+  <ion-grid *ngIf="members.length" class="nostros-grid" >
+    <ion-row>
+      <ion-col class="member-col" *ngFor="let member of members; let i= index;" size="6" >
+        <img class="member-preview" (click)="openMember(i)" [src]="getImage(i)" />
+      </ion-col>
+    </ion-row>
+    <div class="arrows-box" >
+      <ion-button (click)="fetchWorkers(currentPage-1)" [disabled]="currentPage===1" size="small">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fetchWorkers(currentPage+1)" [disabled]="currentPage===lastPage" size="small">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>  
+      </ion-button>
+    </div> 
+  </ion-grid>
+
+  <footer-media></footer-media>
+  
+</ion-content>
+
+

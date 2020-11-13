@@ -1,0 +1,137 @@
+ion-content {
+	--background: none;
+	background-color: var(--ion-input-back);
+}
+
+.btn-profile-buy {
+	min-height: 38px;
+	font-size: 12px;
+	--padding-end: 1rem;
+	--padding-start: 1rem;
+	text-transform: capitalize;
+}
+
+.profile-balance-card-container {
+	--background: var(--ion-color-primary);
+	border-radius: 20px;
+	width: 245px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profile-balance-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+}
+
+.profile-balance-label-container {
+	//color: white;
+	width: 100%;
+	.profile-balance-label {
+		font-size: 15px;
+		max-width: 80%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+	ion-icon {
+		padding-left: 0.3rem;
+	}
+}
+
+.profile-amount-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.currency {
+		color: white;
+		font-size: 1.5rem;
+		margin-right: 0.5rem;
+	}
+
+	.profile-balance-amount {
+		font-size: 2.5rem;
+		color: white;
+		margin-top: 0.25rem;
+		margin-bottom: 0.25rem;
+	}
+}
+
+.profile-swipe-container {
+	padding: 0.3rem;
+	display: flex;
+}
+
+.profile-swipe-labels {
+	width: 95%;
+	padding: 12px 5px;
+	font-size: 13px;
+	background-color: white;
+	border-radius: 10px;
+	color: var(--ion-color-primary);
+	cursor: pointer;
+	text-align: center;
+}
+
+.profile-swipe-labels.active {
+	background-color: var(--ion-color-primary);
+	color: white;
+}
+
+.data-card {
+	--background: white;
+	width: 300px;
+	padding: 0.4rem;
+	border-radius: 20px;
+	ion-card-content {
+		padding: 0;
+	}
+}
+
+ion-slides {
+	width: 100%;
+	ion-slide {
+		width: 100%;
+	}
+}
+
+.reservations {
+	padding-top: 1.5rem;
+	padding-bottom: 3rem;
+}
+
+.profile-data-container {
+	flex-direction: column;
+	padding-bottom: 2rem;
+}
+
+.img-profile-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 0.8rem;
+	padding-bottom: 1rem;
+}
+
+.img-profile-user,
+.img-profile-user img {
+	width: 100px;
+	height: 100px;
+}
+
+.profile-fields {
+	font-size: 15px;
+}
+
+.select-g {
+	max-width: 100%;
+	flex: 1;
+	padding-left: 0;
+}

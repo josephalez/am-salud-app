@@ -1,0 +1,12 @@
+<ion-card (click)="emitView()" buttons class="product-card"
+  [ngStyle]="{'background-image':'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('+getImageUrl()+')'}" >
+  <span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 100%; word-break: unset; font-size: 12px; color:white">
+    {{name}}
+  </span>
+  <span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 100%; word-break: unset; font-size: 9px; color: var(--ion-color-medium-tint);">
+    {{description}}
+  </span>
+  <span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 100%; word-break: unset; font-size: 11px; color: white; margin-top:.2rem;">
+    ${{price}}
+  </span>
+</ion-card>

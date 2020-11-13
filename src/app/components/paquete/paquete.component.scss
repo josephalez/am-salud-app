@@ -1,0 +1,36 @@
+.paquete {
+	margin: 0;
+	--background: white;
+}
+
+.paquete-card {
+	padding: 0.25rem;
+}
+
+.paquete-cantidad-container {
+	padding: 0.25rem;
+	align-items: center;
+}
+
+.paquete-cantidad-label {
+	font-size: 8px;
+	text-align: center;
+}
+.paquete-cantidad {
+	font-size: 17px;
+	text-align: center;
+}
+.paquete-cantidad-container.upper {
+	border-bottom: 0.5px solid rgba(180, 180, 180, 0.8);
+}
+.paquete-cantidad.bonus {
+	color: var(--ion-color-primary);
+}
+.active .paquete-card {
+	background-color: var(--ion-color-primary);
+	color: white !important;
+}
+
+.active .paquete-cantidad.bonus {
+	color: white !important;
+}

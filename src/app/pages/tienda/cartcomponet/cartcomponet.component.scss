@@ -1,0 +1,135 @@
+.bg-product {
+	--background: var(--light-grey);
+}
+
+.cart-list {
+	margin-bottom: 0;
+}
+
+.product-image {
+	flex: 1;
+	height: 50%;
+	ion-slide {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}
+
+.products-sliders-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 999;
+}
+
+.add-input {
+	--padding-start: 0.2rem;
+	--padding-end: 0.2rem;
+	--box-shadow: none;
+}
+
+.product-details {
+	background: white;
+	margin: 0;
+	margin-top: -1rem;
+	z-index: 9999;
+	border-radius: 18px;
+	padding: 1rem;
+	padding-bottom: 2rem;
+
+	ion-card-header > ion-card-title {
+		font-size: 16px;
+	}
+
+	ion-card-content {
+		font-size: 14px;
+	}
+}
+
+.button-add-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-add-container.select {
+	margin-bottom: 1rem;
+}
+
+.button-add-container.number-inputs {
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	padding: 1rem 0;
+	.add-icon {
+		--background: var(--ion-color-lightGray);
+	}
+	.add-label {
+		margin-left: 1rem;
+		margin-top: 0.4rem;
+	}
+}
+
+.price-details {
+	align-items: flex-start;
+}
+.product-number {
+	--color: black;
+}
+
+.button-add-cart {
+	--padding-bottom: 1rem;
+	--padding-top: 1rem;
+}
+.reservation-type-title {
+	padding: 1rem 1.5rem;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: start;
+}
+
+.card-radio-subtitle {
+	font-size: 12px;
+	color: var(--ion-color-lightGray);
+}
+
+.card-profile-section.select-type {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-right: 0.4rem;
+	margin-bottom: 2rem;
+}
+.subtotal {
+	background: #fff;
+	padding: 22px 10px;
+	text-align: center;
+	border-radius: 0 0 11px 11px;
+}
+.imgpro {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+img.imgpro {
+	border-radius: 10px;
+}
+h6 {
+	margin: 2px;
+}
+ion-badge.count-card {
+	border-radius: 50%;
+	padding: 7% 10%;
+	position: absolute;
+	top: 4px;
+}
+.paquetes-empty-container {
+	border-radius: 15px;
+	--background: white;
+	ion-card-content {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		text-align: center;
+	}
+}

@@ -1,0 +1,25 @@
+.congrats-card{
+    --background: white;
+
+    ion-row{
+        justify-content: flex-end;
+        padding-top: 1rem;
+    }
+}
+
+.congrats-card-title{
+    padding: 0;
+    width: 100%;
+    font-size: 12px;
+    color: black;
+}
+
+.congrats-card-wrapper{
+    padding: 1rem;
+    padding-top:.25rem;
+    padding-bottom: 2rem;
+}
+
+.exit-btn{
+    height: 1rem;
+}

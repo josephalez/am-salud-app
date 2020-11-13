@@ -1,0 +1,101 @@
+<app-navbar title="PAQUETES"></app-navbar>
+
+<ion-content class="paquetes-container">
+	<div class="select-currency-container">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-select
+						[(ngModel)]="selectedCredit"
+						name="selectedCredit"
+						class="select-dropdown"
+						placeholder="Elige tipo de Crédito"
+						(ionChange)="fetchPaquetes()"
+					>
+						<ion-select-option *ngFor="let credit of credits" [value]="credit.id">
+							{{credit.name}}
+						</ion-select-option>
+					</ion-select>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+
+	<div class="paquetes">
+		<ion-card *ngIf="!paquetes.length" class="paquetes-empty-container">
+			<ion-card-content>
+				<h4 class="paquetes-empty">
+					No Hay paquetes
+				</h4>
+			</ion-card-content>
+		</ion-card>
+		<ion-grid>
+			<ion-row>
+				<ion-col *ngFor="let paquete of paquetes; let i=index" size="4">
+					<paquete
+						[index]="i"
+						[isActive]="i===selectedPaquete"
+						[points]="paquete.points"
+						[bonus]="paquete.bonus"
+						(selectPaquete)="onselectPackage($event)"
+					></paquete>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+
+	<div class="payment-methods-label">
+		<span ion-text-center class="label-title">
+			Métodos de pago
+		</span>
+		<ion-button fill="clear" class="label-add" (click)="addCard()">
+			+ Agregar nueva tarjeta
+		</ion-button>
+	</div>
+
+	<div class="payment-cards payments-paquetes">
+		<ion-card class="paquetes-empty-container" *ngIf="!cards.length">
+			<ion-card-content>
+				<h4 class="paquetes-empty">
+					No Hay Tarjetas
+				</h4>
+			</ion-card-content>
+		</ion-card>
+		<ion-card
+			button
+			class="payment"
+			*ngFor="let card of cards; let i=index"
+			(click)="selectCard(card.id,typePaymentConekta)"
+			[ngClass]="{active: card.id===cardId}"
+		>
+			<ion-card-content class="payment-card">
+				<div class="payment-card-container">
+					<div class="payment-card-logo">
+						<ion-thumbnail slot="start" class="imagen-tar">
+							<img [src]="'assets/icon/icon-' + card.brand + '.png'" />
+						</ion-thumbnail>
+					</div>
+					<div class="payment-card-info">
+						<div class="payment-card-name">Tarjeta de Crédito/Débito</div>
+						<div class="payment-card-value">*****{{card.card_number}}</div>
+					</div>
+				</div>
+			</ion-card-content>
+		</ion-card>
+	</div>
+
+	<div class="buttons-container">
+		<ion-button
+			size="block"
+			[disabled]="(selectedPaquete<0 || cardId<=0)"
+			shape="round"
+			fill="solid"
+			color="primary"
+			(click)="comprarPaquete()"
+		>
+			Comprar Paquetes
+		</ion-button>
+	</div>
+</ion-content>
+
+<footer-media></footer-media>

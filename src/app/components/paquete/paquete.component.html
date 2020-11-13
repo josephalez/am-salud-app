@@ -1,0 +1,24 @@
+<ion-card button class="paquete" [ngClass]="{active: isActive}" (click)="emitIndex()">
+	<ion-card-content class="paquete-card">
+		<div class="paquete-cantidad-container upper">
+			<div class="paquete-cantidad-label">
+				Compra
+			</div>
+			<div class="paquete-cantidad">
+				{{ points | currency }}
+			</div>
+			<div class="paquete-cantidad-label">
+				Puntos
+			</div>
+		</div>
+		<div class="paquete-cantidad-container">
+			<div class="paquete-cantidad-label">Recibe +{{ bonus }}%</div>
+			<div class="paquete-cantidad bonus">
+				{{ bonusT | currency }}
+			</div>
+			<div class="paquete-cantidad-label">
+				Puntos
+			</div>
+		</div>
+	</ion-card-content>
+</ion-card>

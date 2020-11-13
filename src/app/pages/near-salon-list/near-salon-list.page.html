@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <div class="line"></div>
+    <h4 class="title">Salon Nearby</h4>
+    <p class="count-label">Found <span>320 place</span> near <span>San Francisco</span></p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none" class="ion-no-padding" *ngFor="let salon of salonList">
+    <ion-thumbnail slot="start">
+      <img [src]="salon.image">
+    </ion-thumbnail>
+    <ion-label>
+      <h5 class="salon-name">{{salon.name}} <span class="distance ion-float-right">
+          <ion-icon src="../../../assets/images/General/ic_location.svg">
+          </ion-icon>{{salon.distance}}
+        </span></h5>
+      <p class="salon-address">{{salon.address}}</p>
+      <p class="salon-start"><img src="../../../assets/images/General/ic_star.svg" alt=""> {{salon.star}}</p>
+      <p class="salon-time">{{salon.time}}</p>
+      <ion-button mode="md" class="btn-book" size="small" (click)="viewSalonDetauil()">Book</ion-button>
+    </ion-label>
+  </ion-item>
+</ion-content>

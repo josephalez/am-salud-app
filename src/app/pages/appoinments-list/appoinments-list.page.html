@@ -1,0 +1,108 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Appoinments</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment
+      class="main-segment"
+      mode="md"
+      (ionChange)="chageViewAppoinment($event)"
+    >
+      <ion-segment-button mode="md" value="Upcomming" checked>
+        <ion-label
+          >Upcomming
+          <div
+            [ngClass]="{ 'active-segment-line': activeTab == 'Upcomming' }"
+          ></div>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button mode="md" value="Completed">
+        <ion-label
+          >Completed
+          <div
+            [ngClass]="{ 'active-segment-line': activeTab == 'Completed' }"
+          ></div>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button mode="md" value="Cancled">
+        <ion-label
+          >Cancled
+          <div
+            [ngClass]="{ 'active-segment-line': activeTab == 'Cancled' }"
+          ></div>
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="activeTab">
+    <div *ngSwitchCase="'Upcomming'">
+      <ion-item lines="none" *ngFor="let item of [0, 1, 2, 3, 4]">
+        <ion-thumbnail slot="start">
+          <img src="https://placehold.it/66x66" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2 class="title">RedBox Barber</h2>
+          <p class="service-name">HairCut</p>
+          <p class="service-provide">George Stephen</p>
+          <p class="address">Rainbow piolly partke 4332</p>
+        </ion-label>
+        <div slot="end" class="end-div ion-text-right">
+          <div class="calendor-icon">
+            <ion-icon
+              src="../../../assets/images/General/noun_Calendar_2577480.svg"
+            ></ion-icon>
+          </div>
+          <p class="date">20-jan-2019</p>
+          <h4 class="time">12:45 PM</h4>
+        </div>
+      </ion-item>
+    </div>
+    <div *ngSwitchCase="'Completed'">
+      <ion-item lines="none" *ngFor="let item of [0, 1]">
+        <ion-thumbnail slot="start">
+          <img src="https://placehold.it/66x66" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2 class="title">RedBox Barber</h2>
+          <p class="service-name">HairCut</p>
+          <p class="service-provide">George Stephen</p>
+          <p class="address">Rainbow piolly partke 4332</p>
+        </ion-label>
+        <div slot="end" class="end-div ion-text-right">
+          <div class="calendor-icon">
+            <ion-icon
+              src="../../../assets/images/General/noun_Calendar_2577480.svg"
+            ></ion-icon>
+          </div>
+          <p class="date">20-jan-2019</p>
+          <h4 class="time">12:45 PM</h4>
+        </div>
+      </ion-item>
+    </div>
+    <div *ngSwitchCase="'Cancled'">
+      <ion-item lines="none" *ngFor="let item of [0, 1, 2]">
+        <ion-thumbnail slot="start">
+          <img src="https://placehold.it/66x66" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2 class="title">RedBox Barber</h2>
+          <p class="service-name">HairCut</p>
+          <p class="service-provide">George Stephen</p>
+          <p class="address">Rainbow piolly partke 4332</p>
+        </ion-label>
+        <div slot="end" class="end-div ion-text-right">
+          <div class="calendor-icon">
+            <ion-icon
+              src="../../../assets/images/General/noun_Calendar_2577480.svg"
+            ></ion-icon>
+          </div>
+          <p class="date">20-jan-2019</p>
+          <h4 class="time">12:45 PM</h4>
+        </div>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

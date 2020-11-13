@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="openMenu()">
+				<ion-icon color="dark" slot="icon-only" name="menu"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title color="primary" class="ion-text-center ion-text-uppercase">{{ title }}</ion-title>
+		<ion-buttons slot="end" *ngIf="!cars">
+			<ion-button (click)="openProfile()">
+				<ion-icon color="dark" slot="icon-only" name="person"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons slot="end" *ngIf="cars">
+			<ion-button (click)="showCard()">
+				<ion-icon color="dark" slot="icon-only" name="cart"></ion-icon>
+			</ion-button>
+			<ion-badge *ngIf="countCard > 0" slot="end" class="count-card">{{ countCard }}</ion-badge>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>

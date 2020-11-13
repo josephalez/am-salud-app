@@ -1,0 +1,32 @@
+<ion-content>
+	<div class="img-logo-container">
+		<img class="img-logo" src="assets/images/logo/logoBlancoAMsalud.png" class="img-logo" alt="logo" />
+	</div>
+
+	<div class="access-buttons-group">
+		<!--      <ion-button class="btn-access" color="light" mode="md" expand="full" shape="round" fill="solid"
+        (click)="goProfile()">
+        Mi Perfil
+      </ion-button> -->
+
+		<ion-button
+			class="btn-access"
+			color="light"
+			mode="md"
+			expand="full"
+			shape="round"
+			fill="solid"
+			[routerLink]="['/reserva', {service:1, title:'nutrición'}]"
+		>
+			Nutrition Center by AMSalud
+		</ion-button>
+
+		<ion-button class="btn-access" color="light" mode="md" expand="full" shape="round" fill="solid" (click)="goLaserClinic()">
+			Laser Clinic By AMSalud
+		</ion-button>
+
+		<ion-button class="btn-access" color="light" mode="md" expand="full" shape="round" fill="solid" [routerLink]="['/tienda']">
+			The Healthy Corner By AMSalud
+		</ion-button>
+	</div>
+</ion-content>

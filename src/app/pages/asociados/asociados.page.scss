@@ -1,0 +1,44 @@
+.add-person-bg{
+    --background: var(--light-grey);
+}
+
+.add-person-card{
+    margin:1rem 0;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    background-color: white;
+}
+
+.add-person-subtitle{
+    font-size: 22px;
+    color: black;
+}
+
+.add-person-container{
+    padding: 2rem .5rem;
+}
+
+.auth-input{
+    max-width: 100%;
+    flex: 1;
+    padding-left: 0;
+}
+
+.associated{
+    ion-label{
+        margin-left:.7rem;
+    }
+}
+
+.btn-add{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.empty-asociados{
+    padding:2rem;
+    font-size: 20px;
+    margin:0;
+}

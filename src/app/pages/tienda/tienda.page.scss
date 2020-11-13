@@ -1,0 +1,34 @@
+.bg-shop{
+    --background: var(--light-grey);
+    ion-list{
+        margin-bottom: 0;
+        margin-top:0;
+    }
+}
+
+.segment-card {
+    display: flex;
+    border-bottom: 0;
+    flex-direction: row;
+    background: white;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    .segment-item {
+        display: inline-block !important;
+        min-width: 100px !important;
+        width: auto !important;
+        border-bottom: 2px solid transparent;
+        transition: all .6s;
+    }
+    .segment-item.active{
+        border-color: var(--ion-color-primary);
+        font-weight: bold;
+    }
+}
+
+.products-grid{
+    flex:1;
+    ion-row{
+        justify-content: space-around;
+    }
+}

@@ -1,0 +1,30 @@
+.add-person-bg{
+    --background: var(--light-grey);
+}
+
+.add-person-card{
+    margin:0;
+    background-color: white;
+    padding-bottom:1.5rem;
+}
+
+.add-person-subtitle{
+    font-size: 22px;
+    color: black;
+}
+
+.add-person-container{
+    padding: 2rem .5rem;
+}
+
+.auth-input{
+    max-width: 100%;
+    flex: 1;
+    padding-left: 0;
+}
+
+.associated{
+    ion-label{
+        margin-left:.7rem;
+    }
+}

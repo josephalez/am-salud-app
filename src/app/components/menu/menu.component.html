@@ -1,0 +1,55 @@
+<ion-menu class="main-drawer" side="start" menuId="amsMenu" contentId="main" swipeGesture>
+	<ion-header class="main-drawer-header main-drawer-content" no-border>
+		<ion-toolbar class="dark-toolbar main-drawer-content" no-border color="dark">
+			<ion-buttons slot="start">
+				<ion-button (click)="closeMenu()">
+					<ion-icon color="light" slot="icon-only" name="close"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+			<ion-title text-center>MENÚ</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content class="main-drawer-content">
+		<ion-grid class="main-drawer-grid">
+			<ion-row>
+				<ion-col (click)="goPage('/home')" class="main-drawer-item" size="6">
+					<ion-icon name="home"></ion-icon>
+					<span class="main-drawer-label">Home</span>
+				</ion-col>
+				<ion-col (click)="goPage('/servicios')" class="main-drawer-item" size="6">
+					<ion-icon name="cube"></ion-icon>
+					<span class="main-drawer-label">Servicios</span>
+				</ion-col>
+				<ion-col (click)="goPage('/paquetes')" class="main-drawer-item" size="6">
+					<ion-icon name="pricetags"></ion-icon>
+					<span class="main-drawer-label">Paquetes</span>
+				</ion-col>
+				<ion-col (click)="goPage('/nosotros')" class="main-drawer-item" size="6">
+					<ion-icon name="ios-people"></ion-icon>
+					<span class="main-drawer-label">Nosotros</span>
+				</ion-col>
+				<ion-col (click)="goPage('/perfil')" class="main-drawer-item" size="6">
+					<ion-icon name="md-person"></ion-icon>
+					<span class="main-drawer-label">Perfil</span>
+				</ion-col>
+				<ion-col (click)="goPage('/asociados')" class="main-drawer-item" size="6">
+					<ion-icon name="md-person-add"></ion-icon>
+					<span class="main-drawer-label">Usuarios <br> asociados</span>
+				</ion-col>
+				<ion-col class="main-drawer-item" size="6">
+					<ion-icon name="notifications"></ion-icon>
+					<span class="main-drawer-label">Alertas</span>
+				</ion-col>
+				<ion-col class="main-drawer-item" size="6">
+					<ion-icon name="copy"></ion-icon>
+					<span class="main-drawer-label">Legales</span>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-button (click)="logout()" class="btn-menu" color="medium" size="small" mode="md" shape="round" fill="solid">
+					CERRAR SESIÓN
+				</ion-button>
+			</ion-row>
+		</ion-grid>
+	</ion-content>
+</ion-menu>

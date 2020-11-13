@@ -1,0 +1,28 @@
+<app-navbar title="TIENDA" [cars]="true" (pulsar)="onVoted($event);"></app-navbar>
+<ion-content class="bg-shop">
+	<ion-tab-bar class="segment-card">
+		<ion-tab-button
+			*ngFor="let category of categories; let i= index;"
+			class="segment-item"
+			[ngClass]="{'active':i===selectedCategory}"
+			(click)="selectCategory(i)"
+		>
+			<ion-label>{{category.name}}</ion-label>
+		</ion-tab-button>
+	</ion-tab-bar>
+
+	<ion-grid class="products-grid">
+		<ion-row>
+			<ion-col *ngFor="let product of products;" size="6">
+				<product
+					(view)="openProduct(product)"
+					[mainPicture]="product.main_picture"
+					[name]="product.name"
+					[description]="product.description"
+					[price]="product.price"
+				></product>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+<footer-media></footer-media>

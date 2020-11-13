@@ -1,0 +1,204 @@
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    height: 135px;
+    background: url('https://placehold.it/360x135') no-repeat;
+    background-size: 100% 142px;
+  }
+  ion-title {
+    font-size: 19px;
+    color: var(--ion-color-white);
+    font-family: 'tofini_bold';
+  }
+  ion-button {
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --ripple-color: var(--ion-color-white);
+    .back-icon {
+      width: 23.74px;
+      height: 20px;
+    }
+    .bookmark-icon {
+      width: 17px;
+      height: 24px;
+    }
+  }
+  --background: none;
+  background: url('https://placehold.it/360x140') no-repeat;
+  background-size: 100% 140px;
+
+  .profile-detail {
+    background: var(--ion-color-white-light);
+    width: 100%;
+    position: relative;
+    text-align: center;
+    .profile-image {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--ion-color-orange);
+      margin: -3.1rem auto 0px;
+      position: relative;
+      z-index: 111119;
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+      }
+      .active {
+        height: 18px;
+        width: 18px;
+        background-color: var(--ion-color-green);
+        position: absolute;
+        right: 4px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 2px solid var(--ion-color-white);
+      }
+    }
+    .name {
+      font-family: 'tofini_bold';
+      margin-bottom: 0px;
+    }
+    .email {
+      font-size: 14px;
+      font-family: 'tofini_regular';
+      margin-top: 2px;
+      color: var(--ion-color-lightGray);
+    }
+    .gender {
+      font-size: 14px;
+      font-family: 'tofini_book';
+      color: var(--ion-color-simpleDark);
+      margin-bottom: 0px;
+    }
+  }
+}
+ion-content {
+  ion-segment {
+    position: sticky;
+    top: 0;
+    z-index: 22222;
+    background: var(--ion-color-white);
+    padding-bottom: 2px;
+  }
+
+  .sub-detail {
+    ion-segment-button {
+      font-family: 'tofini_medium';
+      &:first-child {
+        margin-left: 24px;
+      }
+      &:last-child {
+        margin-right: 24px;
+      }
+    }
+    ion-item {
+      --background: var(--ion-color-white);
+      border-radius: 10px;
+
+      ion-thumbnail {
+        height: 66px;
+        width: 66px;
+        border-radius: 10px;
+        img {
+          border-radius: 10px;
+        }
+      }
+      .title {
+        font-size: 15px;
+        font-family: 'tofini_medium';
+        margin-bottom: 0px;
+      }
+      .service-name {
+        font-size: 12px;
+        font-family: 'tofini_medium';
+        margin: 0px;
+        line-height: 15px;
+        color: var(--ion-color-MiddleGray);
+      }
+      .service-provide {
+        font-size: 12px;
+        font-family: 'tofini_medium';
+        margin: 0px;
+        line-height: 15px;
+        color: var(--ion-color-gray);
+      }
+      .address {
+        font-size: 12px;
+        line-height: 14px;
+        font-family: 'tofini_regular';
+        white-space: initial;
+        margin-top: 8px;
+        color: var(--ion-color-lightGray);
+      }
+      .end-div {
+        margin-left: 10px;
+        .calendor-icon {
+          padding: 3px;
+          background: rgba(253, 108, 87, 0.3);
+          border-radius: 50%;
+          height: 25px;
+          width: 25px;
+          text-align: center;
+          padding-top: 5px;
+          margin-bottom: 7px;
+          margin: 0px 0px 7px auto;
+
+          ion-icon {
+            font-size: 13px;
+            color: var(--ion-color-orange);
+          }
+        }
+        .date {
+          margin: 0px;
+          font-size: 11px;
+          font-family: 'tofini_regular';
+          color: var(--ion-color-simpleDark);
+        }
+        .time {
+          font-family: 'tofini_medium';
+          font-size: 14px;
+          margin: 3px 0px 0px 0px;
+        }
+      }
+    }
+  }
+}
+ion-segment-button {
+  text-transform: initial;
+  --background: transparent;
+  --background-activated: transparent;
+  --background-checked: transparent;
+  --background-hover: transparent;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --border-width: 0px;
+  --color-checked: var(--ion-color-black);
+  --color: var(--ion-color-lightGray);
+  --indicator-color-checked: transparent;
+  font-size: 16px;
+  font-family: 'tofini_regular';
+  &:first-child {
+    margin-left: 15px;
+  }
+  &:last-child {
+    margin-right: 15px;
+  }
+
+  ion-label {
+    margin-bottom: 0px;
+    div {
+      height: 3px;
+      margin-top: 4px;
+      background: transparent;
+    }
+    .active-segment-line {
+      background: var(--ion-color-gradiant);
+    }
+  }
+}
+.check-segment {
+  font-family: 'tofini_medium';
+}

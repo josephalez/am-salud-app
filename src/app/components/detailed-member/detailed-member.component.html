@@ -1,0 +1,22 @@
+<ion-content class="bg-product">
+	<ion-button class="products-sliders-close" (click)="closeModal()" fill="clear">
+		<ion-icon slot="icon-only" color="primary" name="close"></ion-icon>
+	</ion-button>
+
+	<div class="product-image" [style.background-image]="'url(' + img + ')'"></div>
+
+	<ion-card class="product-details">
+		<ion-button [disabled]="!member.instagram" class="products-sliders-close header" (click)="openInstagram()" fill="clear">
+			<ion-icon slot="icon-only" *ngIf="member.instagram" color="primary" name="logo-instagram"></ion-icon>
+			<ion-icon slot="icon-only" *ngIf="!member.instagram" color="medium" name="logo-instagram"></ion-icon>
+		</ion-button>
+		<ion-card-header>
+			<ion-card-title>{{ member.name }}</ion-card-title>
+			<ion-card-subtitle>{{ member.area }}</ion-card-subtitle>
+		</ion-card-header>
+		<ion-card-content>
+			{{ member.description ? member.description : 'Parte del personal de AMSalud' }}
+		</ion-card-content>
+	</ion-card>
+	<footer-media></footer-media>
+</ion-content>

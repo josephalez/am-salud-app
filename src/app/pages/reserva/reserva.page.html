@@ -1,0 +1,162 @@
+<app-navbar [title]="title"> </app-navbar>
+
+<ion-slides class="main-slider swiper-no-swiping" #IonSlider>
+	<ion-slide *ngIf="currentSlide===1">
+		<hour-block-table #HourBlockTable [service]="service" (continue)="reserve($event)"></hour-block-table>
+	</ion-slide>
+	<ion-slide *ngIf="currentSlide===2">
+		<ion-content>
+			<div class="upper-section-container">
+				<ion-button fill="clear" (click)="backCalendar()">
+					<ion-icon color="dark" name="arrow-back"></ion-icon>
+				</ion-button>
+				<span (click)="backCalendar()" class="back-title">Regresar al calendario</span>
+			</div>
+
+			<ion-card class="card-profile-section">
+				<ion-card-content>
+					<div class="member-profile-section">
+						<div class="member-profile-picture"></div>
+						<div class="member-profile-info">
+							<b class="member-profile-label" ion-text-center>Cita con {{workerName}}</b>
+							<span class="member-profile-service">Servicio: <b>{{title}}</b></span>
+
+							<ng-template [ngIf]="descuento>0" [ngIfElse]="sinDescuento">
+								<span class="member-profile-total">Sub Total: <span class="price">{{totalsin|currency}}</span></span>
+								<span class="member-profile-total">Descuento: <span class="price">-{{descuentoTotal|currency}}</span></span>
+								<span class="member-profile-total">Total: <span class="price">{{monto|currency}}</span></span>
+							</ng-template>
+							<ng-template #sinDescuento>
+								<span class="member-profile-total">Total: <span class="price">{{monto|currency}}</span></span>
+							</ng-template>
+						</div>
+					</div>
+					<ion-button text-capitalize="false" strong class="btn-date-read" mode="md" disabled expand="full" shape="round" fill="solid">
+						<ion-icon class="btn-date-icon" name="calendar" color="primary"></ion-icon>{{getDate()}}
+					</ion-button>
+					<!--
+            <ion-button (click)="makeReservation()" class="btn-date-add" mode="md" expand="full" shape="round"
+            fill="solid">
+            AGREGAR AL CALENDARIO
+          </ion-button>
+          -->
+				</ion-card-content>
+			</ion-card>
+
+			<div class="reservation-type-title">
+				Tipo de Cita
+			</div>
+
+			<ion-card class="card-profile-section select-type">
+				<ion-radio-group (ionChange)="changeType($event)">
+					<ion-item lines="none">
+						<ion-label>Presencial</ion-label>
+						<ion-radio value="normal" slot="start" mode="md" color="primary" [checked]="reservationType=='normal'"></ion-radio>
+					</ion-item>
+
+					<ion-item lines="none">
+						<ion-label>En línea <br /><span class="card-radio-subtitle">WhatsApp Video</span></ion-label>
+						<ion-radio value="whatsapp" slot="start" mode="md" color="success" [checked]="reservationType=='whatsapp'"></ion-radio>
+					</ion-item>
+				</ion-radio-group>
+			</ion-card>
+
+			<ion-button (click)="goPayments()" class="btn-continue ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+				continuar
+			</ion-button>
+		</ion-content>
+
+		<footer-media></footer-media>
+	</ion-slide>
+
+	<ion-slide *ngIf="currentSlide===3">
+		<ion-content>
+			<div class="payment-methods-label">
+				<span ion-text-center class="label-title">
+					Métodos de pago
+				</span>
+				<ion-button (click)="addCard()" fill="clear" class="label-add">
+					+ Agregar nueva tarjeta
+				</ion-button>
+			</div>
+
+			<div class="payment-cards">
+				<div class="payment-cards">
+					<ion-card class="paquetes-empty-container" *ngIf="!cards.length">
+						<ion-card-content>
+							<h4 class="paquetes-empty">
+								No Hay Tarjetas
+							</h4>
+						</ion-card-content>
+					</ion-card>
+					<ion-card
+						*ngFor="let payment of cards; let i=index;"
+						button
+						class="payment"
+						[ngClass]="{'active':activePayment===i}"
+						(click)="selectPayment(i,typePaymentConekta)"
+					>
+						<ion-card-content class="payment-card">
+							<div class="payment-card-container">
+								<div class="payment-card-logo">
+									<ion-thumbnail slot="start" class="imagen-tar">
+										<img [src]="'assets/icon/icon-' + payment.brand + '.png'" />
+									</ion-thumbnail>
+								</div>
+								<div class="payment-card-info">
+									<div class="payment-card-name">Tarjeta</div>
+									<div class="payment-card-value">**** **** **** **** {{payment.card_number}}</div>
+								</div>
+							</div>
+							<ion-radio [checked]="activePayment===i" mode="md" slot="end"></ion-radio>
+						</ion-card-content>
+					</ion-card>
+
+					<ion-card
+						*ngIf="reservationType=='normal'"
+						button
+						class="payment"
+						[ngClass]="{'active':typepayment===1}"
+						(click)="selectPayment(-1,1)"
+					>
+						<ion-card-content class="payment-card">
+							<div class="payment-card-container">
+								<div class="payment-card-logo"></div>
+								<div class="payment-card-info">
+									<div class="payment-card-name">Pago en efectivo</div>
+								</div>
+							</div>
+							<ion-radio [checked]="typepayment===1" mode="md" slot="end"></ion-radio>
+						</ion-card-content>
+					</ion-card>
+
+					<ion-card *ngIf="saldoE>monto" button class="payment" [ngClass]="{'active':typepayment===2}" (click)="selectPayment(-1,2)">
+						<ion-card-content class="payment-card">
+							<div class="payment-card-container">
+								<div class="payment-card-logo"></div>
+								<div class="payment-card-info">
+									<div class="payment-card-name">AMCASH {{saldoE|currency}}</div>
+								</div>
+							</div>
+							<ion-radio [checked]="typepayment===2" mode="md" slot="end"></ion-radio>
+						</ion-card-content>
+					</ion-card>
+				</div>
+			</div>
+
+			<ion-button
+				(click)="makeReservation()"
+				color="primary"
+				class="btn-continue ion-text-capitalize"
+				mode="md"
+				expand="full"
+				shape="round"
+				fill="solid"
+			>
+				Confirmar Cita
+			</ion-button>
+		</ion-content>
+
+		<footer-media></footer-media>
+	</ion-slide>
+</ion-slides>

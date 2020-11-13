@@ -1,0 +1,49 @@
+.paquetes-container {
+	--background: var(--light-grey);
+
+	padding-top: 3rem;
+}
+
+.select-currency-container {
+	padding: 0.5rem 1.5rem;
+
+	ion-grid ion-row {
+		justify-content: flex-end;
+	}
+
+	.select-dropdown {
+		background-color: white;
+		border-radius: 5px !important;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 5px;
+		padding-top: 5px;
+	}
+}
+
+.paquetes-empty-container {
+	border-radius: 15px;
+	--background: white;
+	ion-card-content {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		text-align: center;
+	}
+}
+
+.paquetes-empty {
+	font-size: 21px;
+}
+
+.buttons-container{
+	padding: 2rem;
+}
+
+.active ion-card-content {
+	background-color: var(--ion-color-primary);
+	color: white !important;
+}
+
+.active div {
+	color: white !important;
+}

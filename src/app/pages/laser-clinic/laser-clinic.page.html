@@ -1,0 +1,321 @@
+<app-navbar title="Laser Clinic"> </app-navbar>
+
+<ion-slides class="main-slider swiper-no-swiping" #IonSlider2 *ngIf="slide2!=null">
+	<ion-slide *ngIf="slide2==0">
+		<hour-block-table
+			[service]="2"
+			[mostrar]="hayAsociados"
+			[sessionTime]="'00:20'"
+			(back)="goBack2()"
+			(continue)="reserve2($event)"
+			[laserClinic]="true"
+		></hour-block-table>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide2 == 1">
+		<ion-content>
+			<div class="upper-section-container">
+				<ion-button fill="clear" (click)="goCalendar()">
+					<ion-icon color="dark" name="arrow-back"></ion-icon>
+				</ion-button>
+				<span (click)="goBack2()" class="back-title">Regresar al calendario</span>
+			</div>
+
+			<ion-card class="card-profile-section">
+				<ion-card-content>
+					<div class="member-profile-section">
+						<div class="member-profile-picture"></div>
+						<div class="member-profile-info">
+							<b class="member-profile-label" ion-text-center>Cita con {{workerName}}</b>
+							<span class="member-profile-service">Servicio: <b>LC by AMsalud</b></span>
+							<span class="member-profile-total">Total: <span class="price">free</span></span>
+						</div>
+					</div>
+					<ion-grid>
+						<ion-row class="body-total-header">
+							<ion-col class="body-total-label" size="6">
+								<span>Sesión de valoración</span>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					<ion-button text-capitalize="false" strong class="btn-date-read" mode="md" disabled expand="full" shape="round" fill="solid">
+						<ion-icon class="btn-date-icon" name="calendar" color="primary"></ion-icon>{{getDate()}}
+					</ion-button>
+					<ion-button (click)="modalContract2()" class="btn-date-add laser" mode="md" expand="full" shape="round" fill="solid">
+						Continuar
+					</ion-button>
+				</ion-card-content>
+			</ion-card>
+		</ion-content>
+		<footer-media></footer-media>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide2 == 2">
+		<ion-content>
+			<ion-card class="paquetes-empty-container">
+				<ion-card-content>
+					<h4 class="paquetes-empty">
+              Al ser tu primera visita en LC, te agendaremos una sesión de valoración de 20 minutos sin ningún costo.
+					</h4>
+				</ion-card-content>
+			</ion-card>
+			<ion-button (click)="makeReservation()" class="btn-continue ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+				Reservar
+			</ion-button>
+			<ion-button (click)="goBack2()" class="btn-primary ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+				regresar
+			</ion-button>
+		</ion-content>
+		<footer-media></footer-media>
+	</ion-slide>
+</ion-slides>
+
+<ion-slides class="main-slider swiper-no-swiping" #IonSlider *ngIf="slide!=null">
+	<!-- 	<ion-slide *ngIf="slide == 0"> </ion-slide> -->
+
+	<ion-slide *ngIf="slide == 0"> 
+		<laser-form (continue)="toSchedule($event)" [mostrar]="hayAsociados" (regresar)="goBack()"></laser-form>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide == 1">
+		<ion-content>
+			<div class="select-area">
+				<ion-grid>
+					<ion-row class="personal-select only-time">
+						<ion-col size="4">
+							<div class="during-time">
+								<span class="during-time-unit">{{totalTime}}</span>
+								<span class="during-time-label">Tiempo de sesión</span>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+			<div class="table-schedule">
+				<div class="list-zones-title-container">
+					<span class="list-zones-title">Seleccione las zonas a depilar</span>
+				</div>
+				<div *ngIf="zones.length" class="label-zones-container">
+					<span class="label-zones-full">Completo</span>
+					<span class="label-zones-re">Retoque</span>
+				</div>
+				<ion-list>
+					<ng-container *ngFor="let zone of zones">
+						<ion-item class="body-item" lines="none">
+							<ion-label>{{zone.name}}</ion-label>
+							<div class="body-icon" (click)="selectZone(zone.id)">
+								<div slot="end" class="am-radio" [ngClass]="{'active': isChecked(zone.id)}"></div>
+							</div>
+							<div class="body-icon" (click)="selectZone(zone.id,true)">
+								<div slot="end" class="am-radio" [ngClass]="{'active': isChecked(zone.id,true)}"></div>
+							</div>
+						</ion-item>
+					</ng-container>
+				</ion-list>
+				<ion-button
+					[disabled]="!selectedZones.length"
+					class="btn-continue ion-text-capitalize"
+					mode="md"
+					expand="full"
+					shape="round"
+					fill="solid"
+					(click)="warnModal()"
+				>
+					Continuar
+				</ion-button>
+				<ion-button (click)="goBack()" class="btn-primary ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+					regresar
+				</ion-button>
+			</div>
+			<footer-media></footer-media>
+		</ion-content>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide == 2">
+		<hour-block-table
+			[service]="2"
+			[sessionTime]="totalTime"
+			(back)="goBack()"
+			(continue)="reserve($event)"
+			[laserClinic]="true"
+		></hour-block-table>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide == 3">
+		<ion-content>
+			<div class="upper-section-container">
+				<ion-button fill="clear" (click)="goCalendar()">
+					<ion-icon color="dark" name="arrow-back"></ion-icon>
+				</ion-button>
+				<span (click)="goCalendar()" class="back-title">Regresar al calendario</span>
+			</div>
+
+			<ion-card class="card-profile-section">
+				<ion-card-content>
+					<div class="member-profile-section">
+						<div class="member-profile-picture"></div>
+						<div class="member-profile-info">
+							<b class="member-profile-label" ion-text-center>Cita con {{workerName}}</b>
+							<span class="member-profile-service">Servicio: <b>LC by AMsalud</b></span>
+							<span class="member-profile-total">Total: <span class="price">${{totalPrice}}</span></span>
+						</div>
+					</div>
+					<ion-grid>
+						<ion-row class="body-total-header">
+							<ion-col class="body-total-label" size="6">
+								<span><ion-icon name="add-circle"></ion-icon>Zona</span>
+							</ion-col>
+							<ion-col class="body-total-label" size="3">
+								<span>Precio</span>
+							</ion-col>
+							<ion-col class="body-total-label" size="3">
+								<span>Tiempo</span>
+							</ion-col>
+						</ion-row>
+						<ion-row *ngFor="let zoneSelected of selectedZones;">
+							<ion-col class="body-total-label" size="6">
+								<span
+									><ion-icon name="remove-circle"></ion-icon>{{zoneSelected.name+(zoneSelected.inRetoque?'
+									retoque':'')}}</span
+								>
+							</ion-col>
+							<ion-col class="body-total-label" size="3">
+								<span>${{zoneSelected.inRetoque?zoneSelected.retoque:zoneSelected.completo}}</span>
+							</ion-col>
+							<ion-col class="body-total-label" size="3">
+								<span>{{getParsedTime(zoneSelected.inRetoque?zoneSelected.time_retoque:zoneSelected.time_completo)}}</span>
+							</ion-col>
+						</ion-row>
+
+						<ng-template [ngIf]="descuento>0" [ngIfElse]="sinDescuento">
+							<ion-row class="body-total">
+								<ion-col class="body-total-label" size="6">
+									<span>sub Total</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>${{totalsin|currency}}</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>{{totalTime}}</span>
+								</ion-col>
+							</ion-row>
+
+							<ion-row class="body-total">
+								<ion-col class="body-total-label" size="6">
+									<span>Descuento</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>-${{descuentoTotal|currency}}</span>
+								</ion-col>
+							</ion-row>
+
+							<ion-row class="body-total">
+								<ion-col class="body-total-label" size="6">
+									<span>Total</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>${{totalPrice|currency}}</span>
+								</ion-col>
+							</ion-row>
+						</ng-template>
+						<ng-template #sinDescuento>
+							<ion-row class="body-total">
+								<ion-col class="body-total-label" size="6">
+									<span>Total</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>${{totalPrice|currency}}</span>
+								</ion-col>
+								<ion-col class="body-total-label" size="3">
+									<span>{{totalTime}}</span>
+								</ion-col>
+							</ion-row>
+						</ng-template>
+					</ion-grid>
+					<ion-button text-capitalize="false" strong class="btn-date-read" mode="md" disabled expand="full" shape="round" fill="solid">
+						<ion-icon class="btn-date-icon" name="calendar" color="primary"></ion-icon>{{getDate()}}
+					</ion-button>
+					<ion-button (click)="goPayment()" class="btn-date-add laser" mode="md" expand="full" shape="round" fill="solid">
+						Continuar
+					</ion-button>
+				</ion-card-content>
+			</ion-card>
+		</ion-content>
+		<footer-media></footer-media>
+	</ion-slide>
+
+	<ion-slide *ngIf="slide == 4">
+		<ion-content>
+			<div class="payment-methods-label">
+				<span ion-text-center class="label-title">
+					Métodos de pago
+				</span>
+				<ion-button (click)="addCard()" fill="clear" class="label-add">
+					+ Agregar nueva tarjeta
+				</ion-button>
+			</div>
+
+			<div class="payment-cards">
+				<ion-card class="paquetes-empty-container" *ngIf="cards.length==0">
+					<ion-card-content>
+						<h4 class="paquetes-empty">
+							No Hay Tarjetas
+						</h4>
+					</ion-card-content>
+				</ion-card>
+				<ion-card
+					*ngFor="let payment of cards; let i=index;"
+					button
+					class="payment"
+					[ngClass]="{'active':activePayment===i}"
+					(click)="selectPayment(i,typePaymentConekta)"
+				>
+					<ion-card-content class="payment-card">
+						<div class="payment-card-container">
+							<div class="payment-card-logo">
+								<ion-thumbnail slot="start" class="imagen-tar">
+									<img [src]="'assets/icon/icon-' + payment.brand + '.png'" />
+								</ion-thumbnail>
+							</div>
+							<div class="payment-card-info">
+								<div class="payment-card-name">Tarjeta</div>
+								<div class="payment-card-value">**** **** **** **** {{payment.card_number}}</div>
+							</div>
+						</div>
+						<ion-radio [checked]="activePayment===i" mode="md" slot="end"></ion-radio>
+					</ion-card-content>
+				</ion-card>
+				<ion-card button class="payment" [ngClass]="{'active':typepayment===1}" (click)="selectPayment(-1,1)">
+					<ion-card-content class="payment-card">
+						<div class="payment-card-container">
+							<div class="payment-card-logo"></div>
+							<div class="payment-card-info">
+								<div class="payment-card-name">Pago en efectivo</div>
+							</div>
+						</div>
+						<ion-radio [checked]="typepayment===1" mode="md" slot="end"></ion-radio>
+					</ion-card-content>
+				</ion-card>
+
+				<ion-card *ngIf="saldoE>totalPrice" button class="payment" [ngClass]="{'active':typepayment===2}" (click)="selectPayment(-1,2)">
+					<ion-card-content class="payment-card">
+						<div class="payment-card-container">
+							<div class="payment-card-logo"></div>
+							<div class="payment-card-info">
+								<div class="payment-card-name">LCCASH {{saldoE|currency}}</div>
+							</div>
+						</div>
+						<ion-radio [checked]="typepayment===2" mode="md" slot="end"></ion-radio>
+					</ion-card-content>
+				</ion-card>
+			</div>
+			<ion-button (click)="makeReservation()" class="btn-continue ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+				continuar
+			</ion-button>
+			<ion-button (click)="goBack()" class="btn-primary ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid">
+				regresar
+			</ion-button>
+		</ion-content>
+		<footer-media></footer-media>
+	</ion-slide>
+</ion-slides>

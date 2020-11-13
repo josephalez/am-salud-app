@@ -1,0 +1,106 @@
+ion-content{
+    
+    --background: none;
+
+    background-color: var(--light-grey);
+
+}
+
+.card-profile-section{
+
+    margin: 0;
+    background-color: white;
+    border-radius: 18px;
+
+}
+
+.member-profile-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    padding-bottom: 1rem;
+}
+
+.back-title{
+    font-size: 16px;
+}
+
+.member-profile-picture{
+    margin-right: .8rem;
+    width: 70px;
+    height: 65px;
+    border-radius: 10px;
+    background-color: var(--light-grey);//provisional
+}
+
+.member-profile-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.member-profile-label, .member-profile-service, .member-profile-total{
+    color: black;
+    font-size:13px;
+    margin-bottom: .3rem;
+    text-align: start;
+    .price{
+        color: var(--ion-color-primary);
+    }
+}
+
+.upper-section-container{
+    padding-top: .6rem;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.btn-date-read{
+    --background:var(--ion-input-back);
+    --box-shadow: none;
+    --opacity: 1;
+    --color: var(--ion-color-lightGray);
+    font-size: 12px;
+}
+
+.btn-date-add{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 11px;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --color: var(--ion-color-white);
+    --box-shadow: none;
+    --background: var(--ion-color-lightGray);
+}
+
+.btn-date-add.laser{
+    --background: var(--ion-color-primary);
+}
+
+.btn-date-icon{
+    font-size: 20px;
+    margin-right: .5rem;
+}
+
+.payment-methods-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    margin-bottom: 1.4rem;
+    align-items: center;
+}
+
+.label-title{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.label-add{
+    font-size: 11px;
+    --color: var(--ion-color-primary);
+}

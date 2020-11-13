@@ -1,0 +1,140 @@
+<ion-content>
+	<div class="table-schedule form-laser">
+		<form [formGroup]="laserForm">
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿En los últimos días has estado expuesta(o) al sol?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('sun')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.sun.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('sun')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.sun.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Te encuentras en tratamiento médico?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('medical')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.medical.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('medical')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.medical.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Se ha sometido a una terapia laser o radiación, en las áreas a tratar?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('radiation')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.radiation.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('radiation')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.radiation.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Tine la piel sensible o se lesiona fácilmente?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('sensible_skin')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.sensible_skin.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('sensible_skin')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.sensible_skin.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Recibe tratamiento hormonal actualmente?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('hormonal')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.hormonal.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('hormonal')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.hormonal.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Tiene implante, tatuaje, maquillaje, desodorante, perfume, otro, en el área a tratar?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('external_product')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.external_product.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('external_product')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.external_product.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group>
+				<ion-list-header class="question">
+					<ion-label>¿Te encuentras en ciclo menstrual?</ion-label>
+				</ion-list-header>
+				<div class="form-item" (click)="setVals('menstruation')">
+					<div class="am-radio form-select" [ngClass]="{active: laserForm.controls.menstruation.value}"></div>
+					<ion-label class="question-label">Si</ion-label>
+				</div>
+
+				<div class="form-item" (click)="setVals('menstruation')">
+					<div class="am-radio form-select" [ngClass]="{active: !laserForm.controls.menstruation.value}"></div>
+					<ion-label class="question-label">No</ion-label>
+				</div>
+			</ion-radio-group>
+
+			<ion-radio-group *ngIf="radiation">
+				<ion-list-header class="question">
+					<ion-label>¿Cuándo depiló las zonas a tratar por última vez?</ion-label>
+				</ion-list-header>
+
+				<div class="form-item" class="question-date-time">
+					<ion-datetime formControlName="date" displayFormat="DD/MM/YYYY" mode="ios" placeholder="DD/MM/AAAA"></ion-datetime>
+				</div>
+			</ion-radio-group>
+		</form>
+
+		<div class="button-container">
+			<ion-button size="block" [disabled]="laserForm.invalid" (click)="continueEmit()" shape="round" fill="solid" size="small">
+				CONTINUAR
+			</ion-button>
+
+			<ion-button
+				*ngIf="mostrar"
+				class="btn-back ion-text-capitalize"
+				mode="md"
+				expand="full"
+				shape="round"
+				fill="outline"
+				(click)="backButton()"
+			>
+				regresar
+			</ion-button>
+		</div>
+	</div>
+
+	<footer-media></footer-media>
+</ion-content>

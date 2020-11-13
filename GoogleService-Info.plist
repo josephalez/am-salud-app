@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>611824072186-t8v6a511bvc358ut9jbtr58vg0dt4aqu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.611824072186-t8v6a511bvc358ut9jbtr58vg0dt4aqu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCt8no5JEJumQBksKEHDurJBXc8qD_Z-Ss</string>
+	<key>GCM_SENDER_ID</key>
+	<string>611824072186</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ondemandscripts.salon-spa-app</string>
+	<key>PROJECT_ID</key>
+	<string>grup789-d6037</string>
+	<key>STORAGE_BUCKET</key>
+	<string>grup789-d6037.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:611824072186:ios:f3667a9d374d9c86f7e043</string>
+	<key>DATABASE_URL</key>
+	<string>https://grup789-d6037.firebaseio.com</string>
+</dict>
+</plist>

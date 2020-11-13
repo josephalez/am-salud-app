@@ -1,0 +1,33 @@
+
+<ion-card class="congrats-card">
+
+    <ion-row>
+      <ion-button class="exit-btn" (click)="closeModal(false)" color="medium" fill="clear">
+        <ion-icon slot="icon-only" name="close" ></ion-icon>
+      </ion-button>
+    </ion-row>
+  
+    <ion-card-content class="congrats-card-wrapper">
+      
+      <span class="congrats-card-title ion-text-center">
+          Esta información será enviada a tu terapeuta.
+          <br>
+          <br>
+          Ella evaluará en el momento de la sesión el estado de tu piel y por tu seguridad quizá alguna zona no pueda ser depilada.
+          <br>
+          <br>
+          En ese caso se te devolverá el dinero en LC Cash para ser utilizado en otro momento.
+          <br>
+          <br>
+          ¿Desea continuar con el proceso de reserva?          
+      </span>
+
+      <div class="continue-btn-container">
+        <ion-button (click)="closeModal()" color="primary" mode="md" expand="full" shape="round" fill="solid" >
+          Continuar
+        </ion-button>
+      </div>
+  
+    </ion-card-content>
+    
+  </ion-card>

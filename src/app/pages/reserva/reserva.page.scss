@@ -1,0 +1,30 @@
+.reservation-type-title{
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: start;
+}
+
+.card-radio-subtitle{
+    font-size: 12px;
+    color: var(--ion-color-lightGray);
+}
+
+.card-profile-section.select-type{
+    margin-bottom:2rem;
+}
+
+
+.paquetes-empty-container {
+	border-radius: 15px;
+	--background: white;
+	ion-card-content {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		text-align: center;
+	}
+}
+
+.paquetes-empty {
+	font-size: 21px;
+}

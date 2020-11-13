@@ -1,0 +1,31 @@
+
+<ion-card class="congrats-card">
+
+  <ion-row>
+    <ion-button class="exit-btn" (click)="closeModal()" color="medium" fill="clear">
+      <ion-icon slot="icon-only" name="close" ></ion-icon>
+    </ion-button>
+  </ion-row>
+
+  <ion-card-content class="congrats-card-wrapper">
+    
+    <span *ngIf="reservationType=='normal'" class="congrats-card-title ion-text-center">
+      Tu cita ha sido reservada exitosamente
+    </span>
+    
+    <span *ngIf="reservationType=='whatsapp'" class="congrats-card-title ion-text-center">
+      Tu cita online será a través de WhatsApp Video, tu nutrióloga te contactará unos minutos antes. Tu nutrióloga necesitará saber tu peso el día de la consulta
+    </span>
+
+    <span *ngIf="reservationType=='first_time'" class="congrats-card-title ion-text-start">
+        ¡Felicidades! Has dado un gran paso para tu bienestar! Las nutriólogas de AMSalud estamos felices de que te unas a nuestra comunidad.
+        <br>Antes de tu consulta es necesario que hagas lo siguiente:<br>
+        <br>1. Descarga la app nutrify
+        <br>2. Regístrate. En usuario de tu nutriólogo escribe "AMSalud".
+        <br>3. Llena tu expediente clínico
+        <br>4. Espera el día y la hora con tu nutriólogo para iniciar esta increíble experiencia        
+    </span>
+
+  </ion-card-content>
+  
+</ion-card>

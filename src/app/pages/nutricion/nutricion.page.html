@@ -1,0 +1,65 @@
+<app-navbar title="Nutrición"> </app-navbar>
+
+<ion-slides class="main-slider swiper-no-swiping" #IonSlider>
+	<ion-slide>
+		<hour-block-table #HourBlockTable [service]="service" (continueEmit)="reserve()"></hour-block-table>
+	</ion-slide>
+	<ion-slide>
+		<ion-content>
+			<div class="upper-section-container">
+				<ion-button fill="clear" (click)="backCalendar()">
+					<ion-icon color="dark" name="arrow-back"></ion-icon>
+				</ion-button>
+				<span (click)="backCalendar()" class="back-title">Regresar al calendario</span>
+			</div>
+
+			<ion-card class="card-profile-section">
+				<ion-card-content>
+					<div class="member-profile-section">
+						<div class="member-profile-picture"></div>
+						<div class="member-profile-info">
+							<b class="member-profile-label" ion-text-center>Cita con Amelia</b>
+							<span class="member-profile-service">Servicio: <b>Nutrición</b></span>
+							<span class="member-profile-total">Total: <span class="price">$1,200</span></span>
+						</div>
+					</div>
+					<ion-button text-capitalize="false" strong class="btn-date-read" mode="md" disabled expand="full" shape="round" fill="solid">
+						<ion-icon class="btn-date-icon" name="calendar" color="primary"></ion-icon>Mie, 03 Marzo 2020. 10:40am
+					</ion-button>
+					<ion-button class="btn-date-add" mode="md" expand="full" shape="round" fill="solid">
+						AGREGAR AL CALENDARIO
+					</ion-button>
+				</ion-card-content>
+			</ion-card>
+
+			<div class="payment-methods-label">
+				<span ion-text-center class="label-title">
+					Métodos de pago
+				</span>
+				<ion-button fill="clear" class="label-add">
+					+ Agregar nueva tarjeta
+				</ion-button>
+			</div>
+
+			<div class="payment-cards">
+				<div class="payment-cards">
+					<ion-card
+						*ngFor="let payment of cards; let i=index;"
+						button
+						class="payment"
+					>
+						<ion-card-content class="payment-card">
+							<div class="payment-card-container">
+								<div class="payment-card-logo"></div>
+								<div class="payment-card-info">
+									<div class="payment-card-name">Tarjeta</div>
+									<div class="payment-card-value">**** **** **** **** {{payment.card_number}}</div>
+								</div>
+							</div>
+						</ion-card-content>
+					</ion-card>
+				</div>
+			</div>
+		</ion-content>
+	</ion-slide>
+</ion-slides>

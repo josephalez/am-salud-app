@@ -1,0 +1,74 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" mode="md" (click)="backPage()">
+        <ion-icon src="../../../assets/images/General/noun_Arrow_1256499.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Booking Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="serviceiDetail">
+    <ion-row class="ion-no-padding">
+      <ion-col size="4" size-md="2" size-xl="1" class="ion-no-padding">
+        <img class="salon-img" src="https://placehold.it/100x90" alt="" />
+      </ion-col>
+      <ion-col size="8" size-md="10" size-xl="11" class="ion-no-padding">
+        <h4 class="title ">
+          RedBox Barber
+          <span class="start-span ion-float-right">
+            <img src="../../../assets/images/General/ic_star.svg" alt="" />4.0</span>
+        </h4>
+        <p class="address ion-no-margin">288 McClure Court, Arkansas</p>
+        <p class="distance" style="margin-top: 8px;">
+          <img style="margin-bottom: -1px;margin-right: 3px;" src="../../../assets/images/General/ic_location.svg"
+            alt="" />
+          1.2 km
+        </p>
+        <p class="services">
+          <span>Services : </span> Heir cut, Facial and Makeup
+        </p>
+      </ion-col>
+    </ion-row>
+    <p class="amount-tolal">Total: <span class="amount">$45.00</span></p>
+    <div class="date-time">
+      <p>
+        <img src="../../../assets/images/General/noun_Calendar_2577480.svg" alt="" /><span>Friday,</span> 25 August 2019
+        <span>@ 8:30am</span>
+      </p>
+    </div>
+  </div>
+  <div class="payment-section">
+    <h4 class="payment-title">
+      Payment Method
+      <ion-button class="btn-add-card ion-float-right" fill="clear" size="small">
+        + Add a new card
+      </ion-button>
+    </h4>
+
+    <ion-radio-group (ionChange)="chnagePaymentMethod($event)">
+      <ion-item lines="none" [ngClass]="{ active: paymentType == 'Bank Account' }">
+        <img slot="start" class="bank" src="../../../assets/images/General/bank-image.PNG" />
+        <ion-label>
+          <h4>Bank Account</h4>
+          <p>Ending in 9473</p>
+        </ion-label>
+        <ion-radio slot="end" mode="md" value="Bank Account"></ion-radio>
+      </ion-item>
+      <ion-item lines="none" [ngClass]="{ active: paymentType == 'PayPal' }">
+        <img slot="start" class="paypal" class="bank" src="../../../assets/images/General/paypal.PNG" />
+        <ion-label>
+          <h4>PayPal</h4>
+          <p>my.paypal@gmail.com</p>
+        </ion-label>
+        <ion-radio slot="end" mode="md" value="PayPal" checked></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button class="btn-continue" mode="md" expand="full" shape="round" fill="solid" (click)="continue()">
+      Continue with {{ paymentType }}
+    </ion-button>
+  </div>
+</ion-content>

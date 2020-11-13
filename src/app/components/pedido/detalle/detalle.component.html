@@ -1,0 +1,52 @@
+<ion-toolbar>
+	<ion-buttons slot="start">
+		<ion-button (click)="closeModal()">
+			<ion-icon color="dark" slot="icon-only" name="arrow-back"></ion-icon>
+		</ion-button>
+	</ion-buttons>
+	<ion-title color="primary"
+		>Pedido #{{ pedido.id }}
+		<ion-badge color="warning" *ngIf="pedido.status == 0">Pendiente</ion-badge>
+		<ion-badge color="primary" *ngIf="pedido.status == 1">despachado</ion-badge>
+		<ion-badge color="danger" *ngIf="pedido.status == 2">Cancelado</ion-badge>
+		<br />
+		total {{ pedido.total | currency }}
+	</ion-title>
+</ion-toolbar>
+<ion-content class="stripe-card-container">
+	<ion-card class="stripe-card">
+		<ion-card-content class="stripe-card-content">
+			<ion-list>
+				<ion-list-header> Detalle</ion-list-header>
+				<ion-item *ngFor="let detalle of pedido.detalle" (click)="detalle(pedido)">
+					<ion-avatar slot="start">
+						<img [src]="detalle.producto.main_picture" />
+					</ion-avatar>
+					<ion-label>
+						<ion-grid>
+							<ion-row>
+								<ion-col size="12" class="profile-swipe-container">
+									<h2>{{ detalle.producto.name }}</h2>
+								</ion-col>
+								<ion-col size="6" class="profile-swipe-container">
+									<h2>Cantidad</h2>
+									<h2>#{{ detalle.cantidad }}</h2>
+								</ion-col>
+								<ion-col size="6" class="profile-swipe-container">
+									<h3>Precio por unidad</h3>
+									<h3>{{ detalle.price | currency }}</h3>
+								</ion-col>
+								<ion-col size="12" class="profile-swipe-container">
+									<h3>Total</h3>
+									<h3>{{ detalle.price * detalle.cantidad | currency }}</h3>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<footer-media></footer-media>

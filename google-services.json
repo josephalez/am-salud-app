@@ -1,0 +1,40 @@
+{
+	"project_info": {
+		"project_number": "611824072186",
+		"firebase_url": "https://grup789-d6037.firebaseio.com",
+		"project_id": "grup789-d6037",
+		"storage_bucket": "grup789-d6037.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:611824072186:android:7b1f0e599da9dc01f7e043",
+				"android_client_info": {
+					"package_name": "com.ondemandscripts.salon_spa_app"
+				}
+			},
+			"oauth_client": [
+				{
+					"client_id": "611824072186-jlj3uirgorjqlq7vpb69ppbeoifpr5sr.apps.googleusercontent.com",
+					"client_type": 3
+				}
+			],
+			"api_key": [
+				{
+					"current_key": "AIzaSyBiLIoyqgQz1MI69gvxZdgDFTxNgYttOjc"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": [
+						{
+							"client_id": "611824072186-jlj3uirgorjqlq7vpb69ppbeoifpr5sr.apps.googleusercontent.com",
+							"client_type": 3
+						}
+					]
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}

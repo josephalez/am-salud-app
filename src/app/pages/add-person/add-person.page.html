@@ -1,0 +1,92 @@
+<app-navbar title="AGREGAR"></app-navbar>
+
+<ion-content class="add-person-bg">
+  <div class="add-person-container" >
+    <ion-card class="add-person-card" >
+      <ion-card-header>
+        <h1 class="ion-text-center add-person-title">REGISTRA UN USUARIO ASOCIADO</h1>
+      </ion-card-header>
+      <ion-card-content>
+
+        <form [formGroup]="signupGroup">
+          
+       <!-- <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  class="auth-input" placeholder="Nombre de Usuario" formControlName="username"></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="person" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item> -->
+
+          
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  placeholder="Email" class="auth-select" formControlName="email" type="email" ></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="mail" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  class="auth-input" placeholder="Nombre" formControlName="name"></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="person" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-datetime displayFormat="MM DD YY" placeholder="Fecha de nacimiento" class="auth-input auth-select" formControlName="birthday"></ion-datetime>
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="person" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+
+          <!--
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  placeholder="Teléfono" type="tel" class="auth-input" formControlName="phone" ></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="call" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+
+          
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  placeholder="Apellido" class="auth-input" formControlName="last_name" ></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="person" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+          -->
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-select class="select-dropdown auth-input auth-select" formControlName="genero" placeholder="Género">
+              <ion-select-option value="masculino">Masculino</ion-select-option>
+              <ion-select-option value="femenino">Femenino</ion-select-option>
+            </ion-select>
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="people" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item>
+
+         <!--  <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  placeholder="Contraseña" class="auth-input" formControlName="password" type="password"></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="lock" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item> -->
+
+         <!--  <ion-item mode="ios"  class="auth-input-container">
+            <ion-input mode="ios"  placeholder="Confirmar Contraseña" class="auth-input" formControlName="password_confirmation" type="password"></ion-input>   
+            <ion-note class="input-icon" slot="end">
+              <ion-icon name="lock" color="lightGray"></ion-icon>
+            </ion-note>
+          </ion-item> -->
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <ion-button class="btn-auth ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid"
+      (click)="register()">
+      ASOCIAR USUARIO
+    </ion-button>
+  </div>
+</ion-content>

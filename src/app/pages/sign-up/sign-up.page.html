@@ -1,0 +1,76 @@
+<ion-content>
+  <div class="img-logo-container">
+    <img src="assets/images/logo/logoBlancoAMsalud.png" class="img-logo" alt="logo">
+  </div>
+  <div class="content-section">
+    <ion-card class="auth-card">
+      <ion-card-header>
+        <h1 class="ion-text-center title">REGÍSTRATE</h1>
+      </ion-card-header>
+      <ion-card-content>
+
+        <form [formGroup]="signupGroup">
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Nombre</ion-label>
+            <ion-input mode="ios"  class="auth-input" placeholder="Nombre" formControlName="name"></ion-input>   
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Apellido</ion-label>
+            <ion-input mode="ios"  placeholder="Apellido" class="auth-input" formControlName="last_name" ></ion-input>   
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container auth-select">
+            <ion-label position="stacked" color="medium" >Fecha de nacimiento</ion-label>
+            <ion-datetime displayFormat="MM-DD-YY" mode="ios" placeholder="MM/DD/AAAA" class="auth-input auth-select" formControlName="birthday"></ion-datetime>
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Teléfono</ion-label>
+            <ion-input mode="ios" type="tel" placeholder="Teléfono" type="tel" class="auth-input" formControlName="phone" ></ion-input>   
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container auth-select">
+            <ion-label position="stacked" color="medium" >Género</ion-label>
+            <ion-select class="select-dropdown auth-input auth-select" formControlName="gender" placeholder="Género">
+              <ion-select-option value="male">Masculino</ion-select-option>
+              <ion-select-option value="female">Femenino</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Correo</ion-label>
+            <ion-input mode="ios"  placeholder="Email" class="auth-input" formControlName="email" type="email" ></ion-input>   
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Contraseña</ion-label>
+            <ion-input mode="ios"  placeholder="****" class="auth-input" formControlName="password" type="password"></ion-input>   
+          </ion-item>
+
+          <ion-item mode="ios"  class="auth-input-container">
+            <ion-label position="stacked" color="medium" >Confirmar Contraseña</ion-label>
+            <ion-input mode="ios"  placeholder="****" class="auth-input" formControlName="password_confirmation" type="password"></ion-input>   
+          </ion-item>
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <ion-item mode="ios"  class="select-buttons upper" lines="none" (click)="terms=!terms" >
+      <div class="am-radio" [ngClass]="{'active':terms}" ></div>
+      <ion-label>Acepto <a href="#"> términos y condiciones</a></ion-label>
+    </ion-item>
+    <ion-item mode="ios"  class="select-buttons" lines="none" (click)="subscription=!subscription" >
+      <div class="am-radio" [ngClass]="{'active':subscription}" ></div>
+      <ion-label>Acepto recibir promociones y newsletters</ion-label>
+    </ion-item>
+
+    <ion-button class="btn-auth ion-text-capitalize" mode="md" expand="full" shape="round" fill="solid"
+      (click)="register()">
+      REGISTRARSE
+    </ion-button>
+
+    <p class="ion-text-center account-text">Ya tienes cuenta? <a (click)="signIn()">Iniciar Sesión</a></p>
+  </div>
+</ion-content>

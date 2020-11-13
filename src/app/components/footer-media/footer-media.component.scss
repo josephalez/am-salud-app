@@ -1,0 +1,12 @@
+.footer{
+    background: var(--light-grey);
+    padding: 1rem 2rem;
+    ion-row{
+        justify-content: center;
+        ion-icon{
+            font-size: 24px;
+            margin-left: .25rem;
+            margin-right: .25rem;
+        }
+    }
+}

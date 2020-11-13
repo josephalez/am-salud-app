@@ -1,0 +1,76 @@
+<ion-card class="reservation-card">
+	<ion-card-content>
+		<ion-grid>
+			<ion-row class="reservation-header">
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						{{ getParsedWeekDay() }}
+					</span>
+					<span class="reservation-detail-content">
+						{{ getParsedDate() }}
+					</span>
+				</ion-col>
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						Hora
+					</span>
+					<span class="reservation-detail-content">
+						{{ getParsedHour() }}
+					</span>
+				</ion-col>
+			</ion-row>
+			<ion-row class="reservation-header">
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						Con
+					</span>
+					<span class="reservation-detail-content">
+						{{ reservation.worker_name }}
+					</span>
+				</ion-col>
+
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						Tipo de reserva
+					</span>
+					<span class="reservation-detail-content">
+						{{ reservation.service_name }}
+					</span>
+				</ion-col>
+			</ion-row>
+			<ion-row class="reservation-header">
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						Para
+					</span>
+					<span class="reservation-detail-content">
+						{{ reservation.asociado?reservation.asociado.name:'Tu usuario' }}
+					</span>
+				</ion-col>
+				<ion-col size="6">
+					<span class="reservation-detail-label">
+						Tipo
+					</span>
+					<span class="reservation-detail-content">
+						{{ reservation.asociado?'Asociado':'Propia' }}
+					</span>
+				</ion-col>
+			</ion-row>
+			<ion-row class="reservation-footer">
+				<ion-col size="4">
+					<span class="reservation-detail-label">
+						Estado
+					</span>
+					<span class="reservation-detail-content">
+						{{ reservation.canceled ? 'Cancelada' : reservation.confirmed ? 'Confirmada' : 'Pendiente' }}
+					</span>
+				</ion-col>
+				<ion-col *ngIf="!reservation.canceled && !reservation.confirmed" size="8">
+					<ion-button (click)="presentActionSheet()" size="small" color="primary">
+						confirmar o cancelar
+					</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card-content>
+</ion-card>

@@ -1,0 +1,80 @@
+.payment-cards{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.payment{
+    background: var(--ion-input-back);        
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 13px;
+}
+
+.payment.add{
+    --background: rgba(218,219,218);    
+    background: rgba(218,219,218);
+}
+
+.payment.active{
+    //border: solid 1.5px var(--ion-color-primary);
+    --background: var(--ion-placeholder-color);
+}
+
+.payment-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem;
+}
+
+.payment-card-container{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+}
+
+.payment-card-logo{
+    background: none;
+    //background-color: var(--ion-placeholder-color);//provisional
+    width: 50px;
+    height: 45px;
+    margin-right: .88rem;
+    border-radius: 10px;
+    img{
+        object-fit: contain;
+    }
+}
+
+.payment-card-logo.add{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-icon{
+        font-size: 40px;
+        color:var(--ion-placeholder-color);
+    }
+}
+
+.payment-card-info{
+    padding-right: .2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.payment-card-add{
+    color: var(--ion-placeholder-color);
+    font-size: 16px;
+    text-align: start;
+}
+
+.payment-card-name, .payment-card-value{
+    color: black;
+    font-size: 11px;
+    text-align: start;
+}

@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="closeModal()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title color="primary" class="ion-text-center ion-text-uppercase">Producto </ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="closeModalcard()">
+				<ion-icon color="dark" slot="icon-only" name="cart"></ion-icon>
+			</ion-button>
+			<ion-badge *ngIf="countCard > 0" slot="end" class="count-card">{{ countCard }}</ion-badge>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="bg-product">
+	<ion-slides pager="true" [options]="slideOpts" class="product-image">
+		<ion-slide
+			[ngStyle]="{'background-image': 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(' + producto.main_picture + ')'}"
+		>
+		</ion-slide>
+		<ion-slide
+			[ngStyle]="{'background-image': 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(' + producto.picture_uno + ')'}"
+		>
+		</ion-slide>
+		<ion-slide
+			[ngStyle]="{'background-image': 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(' + producto.picture_dos + ')'}"
+		>
+		</ion-slide>
+	</ion-slides>
+
+	<ion-card class="product-details">
+		<ion-card-header>
+			<ion-card-title>{{ producto.name }}</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			{{ producto.description }}
+		</ion-card-content>
+		<div class="button-add-container number-inputs">
+			<ion-button class="add-input" color="light" size="small" (click)="add_cantidad(-1)">
+				<ion-icon slot="icon-only" name="remove" color="dark"></ion-icon>
+			</ion-button>
+			<ion-button size="small" disabled fill="clear" color="dark" class="product-number">{{ cantidad }}</ion-button>
+			<ion-button class="add-input" color="light" size="small" (click)="add_cantidad(+1)">
+				<ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+			</ion-button>
+			<span class="add-label">${{ producto.price * cantidad }}</span>
+		</div>
+		<div class="button-add-container" (click)="agregar()">
+			<ion-button class="button-add-cart" color="primary" shape="round" size="small">AGREGAR AL CARRITO</ion-button>
+		</div>
+	</ion-card>
+
+	<footer-media></footer-media>
+</ion-content>

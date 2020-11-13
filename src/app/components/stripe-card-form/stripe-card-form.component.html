@@ -1,0 +1,89 @@
+<ion-toolbar>
+	<ion-buttons slot="start">
+		<ion-button (click)="closeModal()">
+			<ion-icon color="dark" slot="icon-only" name="arrow-back"></ion-icon>
+		</ion-button>
+	</ion-buttons>
+	<ion-title color="primary">Agregar Tarjeta</ion-title>
+</ion-toolbar>
+
+<ion-content class="stripe-card-container">
+	<ion-card class="stripe-card">
+		<ion-card-content class="stripe-card-content">
+			<div class="stripe-card-title">
+				<span>
+					Datos de la tarjeta
+				</span>
+			</div>
+			<form [formGroup]="storeCardForm">
+				<ion-item mode="ios" class="stripe-card-input">
+					<ion-icon name="md-card" slot="start"></ion-icon>
+					<ion-input
+						type="text"
+						[disabled]="onSubmit"
+						formControlName="name"
+						placeholder="Nombre del propietario"
+						maxLength="25"
+					></ion-input>
+				</ion-item>
+				<ion-item mode="ios" class="stripe-card-input">
+					<!-- {{ brand }} -->
+					<ion-thumbnail slot="start" *ngIf="brand" class="imagen-tar">
+						<img [src]="'assets/icon/icon-' + brand + '.png'" />
+					</ion-thumbnail>
+					<!-- <ion-icon  slot="start" *ngIf="brand"></ion-icon> -->
+					<ion-icon name="md-card" slot="start" *ngIf="!brand"></ion-icon>
+					<ion-input
+						type="text"
+						[disabled]="onSubmit"
+						formControlName="number"
+						placeholder="Número de tarjeta"
+						inputmode="numeric"
+						maxLength="24"
+					></ion-input>
+				</ion-item>
+				<ion-item mode="ios" class="stripe-card-input">
+					<ion-icon name="md-calendar" slot="start"></ion-icon>
+					<ion-input
+						inputmode="numeric"
+						maxLength="4"
+						type="text"
+						[disabled]="onSubmit"
+						formControlName="exp_year"
+						placeholder="Año de expiración"
+					></ion-input>
+				</ion-item>
+				<ion-item mode="ios" class="stripe-card-input">
+					<ion-icon name="md-calendar" slot="start"></ion-icon>
+					<ion-input
+						maxLength="2"
+						type="text"
+						inputmode="numeric"
+						[disabled]="onSubmit"
+						formControlName="exp_month"
+						placeholder="Mes de expiración"
+					></ion-input>
+				</ion-item>
+				<ion-item mode="ios" class="stripe-card-input">
+					<ion-icon name="md-lock" slot="start"></ion-icon>
+					<ion-input
+						inputmode="numeric"
+						maxLength="4"
+						[disabled]="onSubmit"
+						formControlName="cvc"
+						placeholder="CVC"
+						type="password"
+					></ion-input>
+				</ion-item>
+			</form>
+		</ion-card-content>
+	</ion-card>
+
+	<div class="buttons-container">
+		<ion-button size="block" [disabled]="onSubmit || storeCardForm.invalid" (click)="addCard()" shape="round" fill="solid" color="primary">
+			Agregar
+		</ion-button>
+	</div>
+</ion-content>
+
+<footer-media></footer-media>

@@ -1,0 +1,7 @@
+{
+  "name": "book_a_point_4.9.1",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

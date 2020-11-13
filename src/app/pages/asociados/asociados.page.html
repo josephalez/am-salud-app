@@ -1,0 +1,33 @@
+<app-navbar title="ASOCIADOS"></app-navbar>
+
+<ion-content class="add-person-bg">
+  <div class="add-person-container" >
+    <ion-card class="add-person-card" >
+      <ion-card-header>
+        <h1 class="ion-text-center add-person-subtitle">Tus usuarios asociados</h1>
+      </ion-card-header>
+      <ion-list>
+        <ion-item *ngFor="let user of users; let i=index;" (click)="detailed(i)" lines="none" class="associated">
+          <ion-avatar>
+            <img src="assets/images/default/user.png" alt="user">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{user.name}}</h2>
+            <p>{{user.email}}</p>
+          </ion-label>
+        </ion-item>
+        <h4 class="empty-asociados" *ngIf="!users.length" >
+          No hay usuarios asociados
+        </h4>
+      </ion-list>
+    </ion-card>    
+    
+    <div class="btn-add">
+      <ion-button mode="md" shape="round" fill="solid" (click)="goAdd()">
+        Agregar Usuario
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<footer-media></footer-media>

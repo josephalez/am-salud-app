@@ -1,0 +1,20 @@
+.confirm-card{
+    border-radius: 20px;
+    --background: white;
+}
+
+.confirm-card-wrapper{
+    color: var(--ion-color-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;   
+    padding: 1.5rem;
+}
+
+.confirm-card-title{
+    font-size: 21px;
+    font-family: 'tofini_regular';
+    margin-bottom:2rem;
+}
+

@@ -1,0 +1,42 @@
+.reservation-card {
+	width: 300px;
+	--background: white;
+	padding: 0;
+	border-radius: 20px;
+	ion-card-content {
+		padding: 0.2rem;
+	}
+}
+.reservation-card.disabled {
+	opacity: 0.5;
+}
+
+.reservation-header,
+.reservation-footer {
+	justify-content: start;
+	ion-col {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.reservation-header {
+	border-bottom: solid 1px var(--ion-color-light-shade);
+}
+
+.reservation-detail-label {
+	color: var(--ion-placeholder-color);
+	font-size: 10px;
+	text-align: start;
+}
+.reservation-detail-content {
+	text-align: start;
+	font-size: 13px;
+	color: black;
+	font-weight: bold;
+}
+
+ion-button {
+	font-size: 11px;
+	margin-top: 9px;
+}

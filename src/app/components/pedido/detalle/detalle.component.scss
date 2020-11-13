@@ -1,0 +1,35 @@
+.stripe-card-container {
+	--background: var(--light-grey);
+}
+
+.stripe-card {
+	border-radius: 16px;
+	background: white;
+}
+
+.stripe-card-title {
+	text-align: center;
+	font-size: 25px;
+	padding-bottom: 1rem;
+}
+
+.stripe-card-input {
+	--padding-start: 0;
+}
+
+.buttons-container {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.stripe-card-content {
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+}
+.imagen-tar {
+	width: 27px;
+	height: 27px;
+}
+ion-avatar {
+	--border-radius: 5px;
+}

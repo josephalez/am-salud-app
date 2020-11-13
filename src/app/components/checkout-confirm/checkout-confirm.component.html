@@ -1,0 +1,27 @@
+
+<ion-card class="congrats-card">
+
+    <ion-row>
+      <ion-button class="exit-btn" (click)="close()" color="medium" fill="clear">
+        <ion-icon slot="icon-only" name="close" ></ion-icon>
+      </ion-button>
+    </ion-row>
+  
+    <ion-card-content class="congrats-card-wrapper">
+      
+      <span class="congrats-card-title ion-text-center">
+          Tu compra fue exitosa!
+          <br>
+          Puedes puedes confirmar tus pedidos en tu perfil.
+          <br>
+      </span>
+
+      <div class="continue-btn-container">
+        <ion-button (click)="close()" color="primary" mode="md" expand="full" shape="round" fill="solid" >
+          Aceptar
+        </ion-button>
+      </div>
+  
+    </ion-card-content>
+    
+  </ion-card>

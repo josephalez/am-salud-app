@@ -1,0 +1,45 @@
+.bg-services{
+    --background: var(--light-grey);
+    min-height: 90%;
+}
+
+.services-card{
+    width: 100%;
+    border-radius: 18px;
+    padding: 1rem;
+    background: white;
+    margin: 1.4rem 0;
+}
+
+.service-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+.service-label-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    ion-icon{
+        font-size: 25px;
+        margin-right: .6rem;
+        color: var(--ion-color-lightGray);
+    }
+}
+
+.service-label{
+    color: var(--ion-color-primary);
+    font-size: 14px;
+    font-weight: bold;
+    width: 80%;
+}
+
+.service-content-container{
+    
+}
+
+.service-content{
+    font-size: 12px;
+}

@@ -1,0 +1,47 @@
+.main-drawer{
+
+}
+
+.main-drawer-content{
+    --background: var(--ion-color-dark);
+    background: var(--ion-color-dark);
+}
+.main-drawer-grid{
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+ion-title{
+    font-weight: lighter;
+}
+
+.main-drawer-item{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    ion-icon{
+        font-size: 25px;
+        margin-bottom: .33rem;
+    }
+    .main-drawer-label{
+        font-weight: lighter;              
+        font-size: 12px;
+    }
+}
+
+.btn-menu{
+    --box-shadow:none;
+    --padding-top:1.25rem;
+    --padding-start: 3.5rem;
+    --padding-bottom:1.25rem;
+    --padding-end: 3.5rem;
+}
+

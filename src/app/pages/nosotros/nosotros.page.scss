@@ -1,0 +1,32 @@
+.bg-nosotros {
+	--background: var(--light-grey);
+}
+
+.nosotros-grid {
+	width: 100%;
+	height: 100%;
+}
+
+.nosotros-grid.void {
+	min-height: 75vh;
+}
+
+.member-col {
+	margin: 0.6rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.arrows-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.member-preview {
+	width: 80%;
+	height: auto;
+	min-height: 40%;
+	border-radius: 15px;
+}

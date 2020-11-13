@@ -1,0 +1,183 @@
+<app-navbar title="MI PERFIL"></app-navbar>
+
+<ion-content>
+	<ion-card class="profile-balance-card-container">
+		<ion-card-content class="profile-balance-card">
+			<ion-button (click)="switchCredit()" class="profile-balance-label-container" color="light" fill="clear">
+				<ion-label class="profile-balance-label" slot="start">
+					{{!selectedCredit?'Seleccione un tipo de crédito':selectedCredit.name}}
+				</ion-label>
+				<ion-icon slot="end" color="light" name="md-arrow-dropdown"></ion-icon>
+			</ion-button>
+
+			<div class="profile-amount-container">
+				<span class="currency"></span>
+				<span class="profile-balance-amount">{{saldo | currency }}</span> <br />
+			</div>
+			<!-- 	<ion-button
+				[routerLink]="['/paquetes']"
+				class="btn-profile-buy"
+				color="light"
+				size="small"
+				mode="md"
+				shape="round"
+				fill="solid"
+				[disabled]="!credits.length"
+			>
+				Transferir Saldo
+			</ion-button> -->
+		</ion-card-content>
+	</ion-card>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="6" class="profile-swipe-container">
+				<span (click)="swipeLabel('datos')" class="profile-swipe-labels" [ngClass]="{'active': selctedLabel==='datos'}">
+					Mis Datos
+				</span>
+			</ion-col>
+			<ion-col size="6" class="profile-swipe-container">
+				<span (click)="pedidos()" class="profile-swipe-labels">
+					Mis Pedidos
+				</span>
+			</ion-col>
+			<ion-col size="6" class="profile-swipe-container">
+				<span (click)="swipeLabel('reservas')" class="profile-swipe-labels" [ngClass]="{'active': selctedLabel==='reservas'}">
+					Reservas
+				</span>
+			</ion-col>
+			<ion-col size="6" class="profile-swipe-container">
+				<span (click)="swipeLabel('pagos')" class="profile-swipe-labels" [ngClass]="{'active': selctedLabel==='pagos'}">
+					Pagos
+				</span>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-slides #ProfileSlides class="swiper-no-swiping">
+		<ion-slide *ngIf="selctedLabel == 'reservas'">
+			<div class="reservations">
+				<ng-container *ngIf="reservations.length > 0">
+					<reservation
+						*ngFor="let reservation of reservations;"
+						(refresh)="fetchReservations()"
+						[reservation]="reservation"
+					></reservation>
+				</ng-container>
+				<ng-container *ngIf="reservations.length == 0">
+					Aún no posee reservaciones.
+				</ng-container>
+			</div>
+		</ion-slide>
+		<ion-slide class="profile-data-container" *ngIf="selctedLabel == 'datos'">
+			<ion-card class="data-card">
+				<ion-card-content>
+					<ion-list>
+						<!--<div class="img-profile-container" >
+              <ion-avatar class="img-profile-user">
+                <img [src]="getImage()">
+              </ion-avatar>
+              <ion-button *ngIf="editionMode" (click)="AccessGallery()" color="primary" mode="md" shape="round" fill="solid">
+                CÁMARA
+              </ion-button>
+              <ion-button *ngIf="editionMode" (click)="AccessGallery(1)" color="primary" mode="md" shape="round" fill="outline">
+                SUBIR
+              </ion-button>
+            </div>-->
+						<ion-item mode="ios">
+							<ion-label *ngIf="editionMode" class="profile-fields"><b>Nombre</b></ion-label>
+							<ion-label *ngIf="!editionMode" class="profile-fields" tex-align-start><b>Nombre:</b> {{name}}</ion-label>
+							<ion-input mode="ios" *ngIf="editionMode" placeholder="Nombre" name="name" [(ngModel)]="name"></ion-input>
+						</ion-item>
+						<ion-item mode="ios">
+							<ion-label *ngIf="editionMode" class="profile-fields"><b>Apellido</b></ion-label>
+							<ion-label *ngIf="!editionMode" class="profile-fields" tex-align-start><b>Apellido:</b> {{last_name}}</ion-label>
+							<ion-input
+								mode="ios"
+								*ngIf="editionMode"
+								placeholder="Apellido"
+								name="last_name"
+								[(ngModel)]="last_name"
+							></ion-input>
+						</ion-item>
+						<ion-item mode="ios" *ngIf="!editionMode">
+							<ion-label class="profile-fields" tex-align-start><b>Email:</b> {{email}}</ion-label>
+						</ion-item>
+						<ion-item mode="ios">
+							<ion-label *ngIf="editionMode" class="profile-fields"><b>Teléfono</b></ion-label>
+							<ion-label *ngIf="!editionMode" class="profile-fields" tex-align-start><b>Teléfono:</b> {{phone}}</ion-label>
+							<ion-input
+								mode="ios"
+								*ngIf="editionMode"
+								type="tel"
+								placeholder="Teléfono"
+								name="phone"
+								[(ngModel)]="phone"
+							></ion-input>
+						</ion-item>
+						<ion-item mode="ios">
+							<ion-label *ngIf="!editionMode" class="profile-fields" tex-align-start
+								><b>Sexo:</b> {{getParsedGender(gender)}}</ion-label
+							>
+							<ion-select *ngIf="editionMode" class="select-g" [(ngModel)]="gender" name="gender" placeholder="Género">
+								<ion-select-option value="male">Masculino</ion-select-option>
+								<ion-select-option value="female">Femenino</ion-select-option>
+							</ion-select>
+						</ion-item>
+					</ion-list>
+				</ion-card-content>
+			</ion-card>
+			<ion-button *ngIf="!editionMode" (click)="editProfile()" color="primary" mode="md" expand="full" shape="round" fill="solid">
+				EDITAR
+			</ion-button>
+
+			<ion-button *ngIf="editionMode" (click)="submitUpload()" color="primary" mode="md" expand="full" shape="round" fill="solid">
+				GUARDAR
+			</ion-button>
+
+			<ion-button *ngIf="editionMode" (click)="quitEdition()" color="primary" mode="md" expand="full" shape="round" fill="outline">
+				CANCELAR
+			</ion-button>
+		</ion-slide>
+		<ion-slide *ngIf="selctedLabel == 'pagos'">
+			<div class="payment-cards">
+				<ion-card class="paquetes-empty-container" *ngIf="!cards.length">
+					<ion-card-content>
+						<h4 class="paquetes-empty">
+							No Hay Tarjetas
+						</h4>
+					</ion-card-content>
+				</ion-card>
+				<ion-card button class="payment" *ngFor="let card of cards; let i=index">
+					<ion-card-content class="payment-card">
+						<div class="payment-card-container">
+							<div class="payment-card-logo">
+								<ion-thumbnail slot="start" class="imagen-tar">
+									<img [src]="'assets/icon/icon-' + card.brand + '.png'" />
+								</ion-thumbnail>
+							</div>
+							<div class="payment-card-info">
+								<div class="payment-card-name">Tarjeta de Crédito/Débito</div>
+								<div class="payment-card-value">****{{card.card_number}}</div>
+							</div>
+						</div>
+					</ion-card-content>
+				</ion-card>
+
+				<ion-card button (click)="addCard()" class="payment add">
+					<ion-card-content class="payment-card add">
+						<div class="payment-card-container">
+							<div class="payment-card-logo add">
+								<ion-icon name="card"></ion-icon>
+							</div>
+							<div class="payment-card-info add">
+								<div class="payment-card-add">Agregar Tarjeta</div>
+							</div>
+						</div>
+					</ion-card-content>
+				</ion-card>
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+
+<footer-media></footer-media>

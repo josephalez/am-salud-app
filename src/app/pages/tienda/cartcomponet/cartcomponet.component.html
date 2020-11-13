@@ -1,0 +1,180 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="closeModal()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title color="primary" class="ion-text-center ion-text-uppercase">Carrito </ion-title>
+
+		<ion-buttons slot="end">
+			<ion-button>
+				<ion-icon color="dark" slot="icon-only" name="cart"></ion-icon>
+			</ion-button>
+			<ion-badge *ngIf="countCard > 0" slot="end" class="count-card">{{ countCard }}</ion-badge>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="bg-shop">
+	<ion-list class="cart-list">
+		<ion-item *ngFor="let product of products; let i = index">
+			<ion-grid>
+				<ion-row>
+					<ion-col size="4">
+						<ion-thumbnail class="imgpro">
+							<ion-img class="imgpro" [src]="product.main_picture"></ion-img>
+						</ion-thumbnail>
+					</ion-col>
+					<ion-col size="8" class="price-details">
+						<h6>
+							{{ product.name }}
+						</h6>
+						<div class="button-add-container number-inputs">
+							<ion-button
+								class="add-input"
+								color="light"
+								size="small"
+								(click)="add_cantidad(-1, product.pivot.cantidad, product.id)"
+							>
+								<ion-icon slot="icon-only" name="remove" color="dark"></ion-icon>
+							</ion-button>
+							<ion-button size="small" disabled fill="clear" color="dark" class="product-number">
+								{{ product.pivot.cantidad }}
+							</ion-button>
+							<ion-button
+								class="add-input"
+								color="light"
+								size="small"
+								(click)="add_cantidad(+1, product.pivot.cantidad, product.id)"
+							>
+								<ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+							</ion-button>
+							<span class="add-label">{{ product.price * product.pivot.cantidad | currency }} </span>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+	<div class="subtotal" *ngIf="products?.length > 0">SubTotal {{ total2 | currency }}</div>
+
+	<div class="reservation-type-title">
+		Metodo de entrega
+	</div>
+
+	<ion-card class="card-profile-section select-type">
+		<ion-radio-group (ionChange)="changeType($event)">
+			<ion-item lines="none">
+				<ion-label>En sucursal</ion-label>
+				<ion-radio value="sucursal" slot="start" mode="md" color="primary" [checked]="tipoEnvio == 'sucursal'"></ion-radio>
+			</ion-item>
+
+			<ion-item lines="none">
+				<ion-label>A domicilio </ion-label>
+				<ion-radio value="domicilio" slot="start" mode="md" color="success" [checked]="tipoEnvio == 'domicilio'"></ion-radio>
+			</ion-item>
+		</ion-radio-group>
+	</ion-card>
+	<div class="reservation-type-title" *ngIf="tipoEnvio == 'domicilio'">
+		Dirección de envío
+	</div>
+	<ion-card class="card-profile-section select-type" *ngIf="tipoEnvio == 'domicilio'">
+		<form [formGroup]="cartForm">
+			<ion-item>
+				<ion-label position="floating">Calle</ion-label>
+				<ion-input formControlName="calle"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">No. Ext.</ion-label>
+				<ion-input formControlName="numExt"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">No. Int.</ion-label>
+				<ion-input formControlName="numInt"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">C.P.</ion-label>
+				<ion-input formControlName="cp"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Colonia</ion-label>
+				<ion-input formControlName="colonia"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Municipio</ion-label>
+				<ion-input formControlName="municipio"></ion-input>
+			</ion-item>
+		</form>
+	</ion-card>
+	<div class="payment-methods-label">
+		<span ion-text-center class="label-title">
+			Métodos de pago
+		</span>
+		<ion-button (click)="addCard()" fill="clear" class="label-add">
+			+ Agregar nueva tarjeta
+		</ion-button>
+	</div>
+	
+	<div class="payment-cards">
+		<ion-card class="paquetes-empty-container" *ngIf="cards.length == 0">
+			<ion-card-content>
+				<h4 class="paquetes-empty">
+					No Hay Tarjetas
+				</h4>
+			</ion-card-content>
+		</ion-card>
+		<ion-card
+			*ngFor="let payment of cards; let i = index"
+			button
+			class="payment"
+			[ngClass]="{active: activePayment === i}"
+			(click)="selectPayment(i, typePaymentConekta)"
+		>
+			<ion-card-content class="payment-card">
+				<div class="payment-card-container">
+					<div class="payment-card-logo">
+						<ion-thumbnail slot="start" class="imagen-tar">
+							<img [src]="'assets/icon/icon-' + payment.brand + '.png'" />
+						</ion-thumbnail>
+					</div>
+					<div class="payment-card-info">
+						<div class="payment-card-name">Tarjeta</div>
+						<div class="payment-card-value">**** **** **** **** {{ payment.card_number }}</div>
+					</div>
+				</div>
+				<ion-radio [checked]="activePayment === i" mode="md" slot="end"></ion-radio>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngIf="tipoEnvio == 'sucursal'" button class="payment" [ngClass]="{active: typepayment === 1}" (click)="selectPayment(-1, 1)">
+			<ion-card-content class="payment-card">
+				<div class="payment-card-container">
+					<div class="payment-card-logo"></div>
+					<div class="payment-card-info">
+						<div class="payment-card-name">Pago en efectivo</div>
+					</div>
+				</div>
+				<ion-radio [checked]="typepayment === 1" mode="md" slot="end"></ion-radio>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngIf="saldoE > total2" button class="payment" [ngClass]="{active: typepayment === 2}" (click)="selectPayment(-1, 2)">
+			<ion-card-content class="payment-card">
+				<div class="payment-card-container">
+					<div class="payment-card-logo"></div>
+					<div class="payment-card-info">
+						<div class="payment-card-name">AMCASH {{ saldoE | currency }}</div>
+					</div>
+				</div>
+				<ion-radio [checked]="typepayment === 2" mode="md" slot="end"></ion-radio>
+			</ion-card-content>
+		</ion-card>
+	</div>
+
+	<div class="button-add-container select" (click)="closeModal()">
+		<ion-button class="button-add-cart" color="primary" shape="round" size="small">Seguir comprando</ion-button>
+	</div>
+	<div class="button-add-container select" (click)="pagar()">
+		<ion-button [disabled]="tipoEnvio == 'domicilio'&&!typepayment" class="button-add-cart" color="primary" shape="round" size="small">CHECKOUT</ion-button>
+	</div>
+	<footer-media></footer-media>
+</ion-content>
